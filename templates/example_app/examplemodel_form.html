@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Postgres Composite Example</title>
+  </head>
+  <body>
+    <h1>Django Postgres Composite example</h1>
+
+    <p>
+      Demonostrates issue
+      <a href="https://github.com/danni/django-postgres-composite-types/issues/18">dani/django-postgres-composite-types#18</a>
+    </p>
+
+    <ol>
+      <li>Leave the <i>name</i> field blank</li>
+      <li>Fill in both of the <i>point</i> fields</li>
+      <li>Submit the form</li>
+    </ol>
+
+    <dl>
+      <dt>Expected outcome</dt>
+      <dd>
+        An error message for the <i>name</i> field,
+        with the values in the <i>point</i> fields preserved.
+      </dd>
+      <dt>Actual outcome</dt>
+      <dd>
+        An error message for the <i>name</i> field,
+        with the values in the <i>point</i> fields lost.
+      </dd>
+    </dl>
+
+    <hr>
+
+    <form method="POST" action="">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
+    </form>
+  </body>
+</html>
